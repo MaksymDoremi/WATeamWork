@@ -9,10 +9,10 @@ Used technologies:
 5.  MySQL (8.0)
 ```
 
--
+---
 
 #### Website
 Live website can be found [here](http://www.erik-bohac.site).
 
--
+---
 Authors: Erik Boháč, Maksym Kintor, Dominik Husák
