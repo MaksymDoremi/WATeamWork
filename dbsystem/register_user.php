@@ -7,7 +7,7 @@ session_start();
 function addUser($name, $email, $pass) {
     $connection = DBC::getConnection();
     
-    $statement = $connection->prepare("call add_user (?, ?, ?, @success)");
+    $statement = $connection->prepare("call add_user (?, ?, ?, 0, @success)");
     $statement->bind_param("sss", $name, $email, hashPass($pass));
     $statement->execute();
     $statement->store_result();
