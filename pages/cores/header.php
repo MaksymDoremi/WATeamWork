@@ -12,6 +12,9 @@
                 case '/pages/logout.php':
                     echo "Online shopping app - Logout";
                     break;
+                case '/pages/account.php':
+                    echo "Online shopping app - Account";
+                    break;
                 case '/pages/login.php':
                     echo "Online shopping app - Login";
                     break;

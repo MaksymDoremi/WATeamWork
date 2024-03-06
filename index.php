@@ -12,11 +12,6 @@ if (!isset($_SESSION['logged'])) {
     $_SESSION['logged'] = 'false';
 }
 
-if (strpos($request, '/api') === 0) {
-    require_once __DIR__ . '/api/index.php';
-    exit();
-}
-
 function req_unauthorized()
 {
     require_once __DIR__ . '/pages/errors/401.php';
@@ -39,6 +34,12 @@ switch ($request){
     case '/pages/chat':
         if ($_SESSION['logged'] == 'true') {
             $redirect = '/pages/chat.php';
+            break;
+        }
+        req_unauthorized();
+    case '/pages/account':
+        if ($_SESSION['logged'] == 'true') {
+            $redirect = '/pages/account.php';
             break;
         }
         req_unauthorized();
