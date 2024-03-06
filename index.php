@@ -4,6 +4,10 @@ session_start();
 
 $request = $_SERVER['REQUEST_URI'];
 
+#include './dbsystem/register_user.php';
+
+#addUser('admin', 'admin@admin.cz', 'admin', 1);
+
 if (!isset($_SESSION['logged'])) {
     $_SESSION['logged'] = 'false';
 }

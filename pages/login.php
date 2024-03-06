@@ -14,7 +14,7 @@
             </div>
             <div class="mb-5">
                 <label for="pass" class="form-label fs-1">Password</label>
-                <input type="password" class="form-control border-0 border-bottom border-secondary border-2 rounded-0 fs-2 text-center fst-italic" name="pass" maxlength="20" minlength="6" required>
+                <input type="password" class="form-control border-0 border-bottom border-secondary border-2 rounded-0 fs-2 text-center fst-italic" name="pass" maxlength="20" minlength="2" required>
             </div>
             <div class="row justify-content-lg-between justify-content-center align-items-center my-5">
                 <a href="./register" class="fs-3 text-decoration-none text-container-4 col-lg-6 col-12">Not registered account yet? Do it here.</a>
