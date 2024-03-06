@@ -1,5 +1,4 @@
 create database WATeamWork;
-
 use WATeamWork;
 
 start transaction;
@@ -66,4 +65,3 @@ DELIMITER ;
 
 
 commit;
-

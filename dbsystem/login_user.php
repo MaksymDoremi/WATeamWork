@@ -9,7 +9,7 @@ function verifyUser($email, $pass) {
     if(password_verify($pass, $data["password"])){
         $_SESSION["logged"] = "true";
         $_SESSION["username"] = $data["name"];
-        header("Location: ../pages/logout");
+        header("Location: ../home");
     }
     else{
         $_SESSION["error"] = "Invalid Email or Password";
