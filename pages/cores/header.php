@@ -9,6 +9,9 @@
                 case '/pages/home.php':
                     echo "Online shopping app - Main Menu";
                     break;
+                case '/pages/order.php':
+                    echo "Online shopping app - Orders";
+                    break;
                 case '/pages/logout.php':
                     echo "Online shopping app - Logout";
                     break;
@@ -60,6 +63,13 @@
                             <span class="px-2 fs-3">Home</span>
                         </div>
                         <div class="navdes<?= $_SESSION['site'] === '/pages/home.php' ? 'active' : '' ?>"></div>
+                    </a>
+                    <a href="/pages/order" class="d-<?= $_SESSION['logged'] === 'true' ? 'block' : 'none' ?> text-decoration-none me-lg-auto p-lg-0 p-1 hover<?= $_SESSION['site'] === '/pages/order.php' ? 'active' : '' ?>">
+                        <div class="d-flex text-center py-3 px-4 text-<?= $_SESSION['site'] === '/pages/order.php' ? 'primary' : 'light' ?> justify-content-center align-items-center">
+                            <span class="material-symbols-outlined d-block fs-1 p-1">Restaurant</span>
+                            <span class="px-2 fs-3">Orders</span>
+                        </div>
+                        <div class="navdes<?= $_SESSION['site'] === '/pages/order.php' ? 'active' : '' ?>"></div>
                     </a>
                     <a href="/pages/login" class="d-<?= $_SESSION['logged'] === 'false' ? 'block' : 'none' ?> text-decoration-none ms-lg-auto p-lg-0 p-1 hover<?= $_SESSION['site'] === '/pages/login.php' ? 'active' : '' ?>">
                         <div class="d-flex text-center py-3 px-4 text-<?= $_SESSION['site'] === '/pages/login.php' ? 'primary' : 'light' ?> justify-content-center align-items-center">

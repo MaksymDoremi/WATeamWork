@@ -31,6 +31,9 @@ switch ($request){
     case '/home':
         $redirect = '/pages/home.php';
         break;
+    case '/pages/order':
+        $redirect = '/pages/order.php';
+        break;
     case '/pages/chat':
         if ($_SESSION['logged'] == 'true') {
             $redirect = '/pages/chat.php';
