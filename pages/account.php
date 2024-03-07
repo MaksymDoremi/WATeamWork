@@ -1,6 +1,6 @@
 <main class="text-center">
     <div class="main-bg text-white p-5 text-container-3">
-        <h1 class="display-4"><?=$_SESSION["username"]?> welcome to your Account</h1>
+        <h1 class="display-4">Welcome, <i><?=$_SESSION["username"]?></i></h1>
     
     </div>
     <div class="container my-5 pb-2">

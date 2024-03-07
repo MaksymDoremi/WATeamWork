@@ -32,8 +32,11 @@ switch ($request){
         $redirect = '/pages/home.php';
         break;
     case '/pages/order':
-        $redirect = '/pages/order.php';
-        break;
+        if ($_SESSION['logged'] == 'true') {
+            $redirect = '/pages/order.php';
+            break;
+        }
+        req_unauthorized();
     case '/pages/chat':
         if ($_SESSION['logged'] == 'true') {
             $redirect = '/pages/chat.php';
