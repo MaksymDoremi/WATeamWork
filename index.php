@@ -24,6 +24,7 @@ function req_notfound()
     exit();
 }
 
+
 switch ($request){
     case '/':
         $redirect = '/pages/home.php';
@@ -69,7 +70,8 @@ switch ($request){
         }
         req_unauthorized();
     default:
-        req_notfound();
+        req_notfound(); 
+    
 }
 
 $_SESSION['site'] = $redirect;

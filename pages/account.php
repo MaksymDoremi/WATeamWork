@@ -1,14 +1,35 @@
 <main class="text-center">
+            <?php
+                if (isset($_SESSION['error'])) {
+                    $errorMessage = $_SESSION['error'];
+                    unset($_SESSION['error']);
+                    echo "<p class='my-5 fs-1 text-danger'>" . $errorMessage . "</p>";
+                }
+                if (isset($_SESSION['report'])) {
+                    $reportMessage = $_SESSION['report'];
+                    unset($_SESSION['report']);
+                    echo "<p class='mb-5 fs-1 text-success'>" . $reportMessage . "</p>";
+                }
+            ?>
     <div class="main-bg text-white p-5 text-container-3">
         <h1 class="display-4">Welcome, <i><?=$_SESSION["username"]?></i></h1>
     
     </div>
-    <div class="container my-5 pb-2">
-        <h2>Why Our App</h2>
-        <p class="mt-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac justo vel erat vestibulum fringilla. Donec quis sapien sit amet arcu tristique convallis. In hac habitasse platea dictumst. Sed vel elit eget orci scelerisque feugiat.</p>
-
-        <h2 class="pt-2">Features that Delight</h2>
-        <p class="mt-3">Donec quis sapien sit amet arcu tristique convallis. In hac habitasse platea dictumst.</p>
+    <div class="my-5 container justify-content-center d-flex pt-5" id="fade">
+        <form class="text-container-6 mx-5 w-75 mb-5" action="../dbsystem/change_password.php" method="POST">
+            
+            <div class="mb-5">
+                <label for="oldPass" class="form-label fs-1">Old Password</label>
+                <input type="password" class="form-control border-0 border-bottom border-secondary border-2 rounded-0 fs-2 text-center fst-italic" name="oldPass" maxlength="20" minlength="2" required>
+            </div>
+            <div class="mb-5">
+                <label for="newPass" class="form-label fs-1">New Password</label>
+                <input type="password" class="form-control border-0 border-bottom border-secondary border-2 rounded-0 fs-2 text-center fst-italic" name="newPass" maxlength="20" minlength="2" required>
+            </div>
+            <div class="row justify-content-center align-items-center my-5">       
+                <button type="submit" class="btn btn-primary fs-3 col-lg-3 mt-4 col-sm-6 col-12">Submit new password</button>
+            </div>
+        </form>
     </div>
     
 </main>
