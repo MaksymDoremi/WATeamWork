@@ -1,3 +1,24 @@
+<?php
+if($_SESSION["logged"] === "true"){
+  require_once 'dbsystem/dbc.php'; 
+  $connection = DBC::getConnection(); 
+
+  $query = "SELECT uo.id, uo.message, u.name, u.email from user_order uo join users u on u.id = uo.user_id where uo.is_canceled = 0;";
+
+  $statement = $connection->prepare($query);
+  $statement->execute();
+
+  $result = $statement->get_result();
+
+  $orders = $result->fetch_all(MYSQLI_ASSOC);
+
+  $statement->close();
+  $connection->close();
+}
+
+?>
+
+
 <div class="main-bg text-white p-5 text-container-3 ">
         <?php
                 if (isset($_SESSION['error'])) {
@@ -14,6 +35,7 @@
         <h1 class="display-4 text-center">Welcome, <i><?=$_SESSION["username"]?> to orders</i></h1>  
 </div>
 <div class="my-5 container justify-content-center d-flex pt-5" id="fade">
+        
         <form class="text-container-6 mx-5 w-75 mb-5" action="../dbsystem/create_order.php" method="POST">
             <div class="mb-3 row">
                 <label for="message" class="col-sm-2 col-form-label">Message</label>
@@ -34,39 +56,30 @@
         </form>
     </div>
 
-<main class="text-center container middle d-flex justify-content-around">
-    
+    <h2 class="text-center">Orders</h2>
+<main class="text-center container middle d-flex justify-content-center">
   
-  <div class="row g-2">
-      <div class="col-xl-4 col-md-6 col-sm-12 shadow-lg" style="border-radius: 8px;">
-          <div class="card" style="background-image: url('/img/Noodles.jpg'); background-size: cover; background-position: center; color: white; border: none; border-radius: 8px;">
-            <div class="card-body" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 8px;">
-              <h4 class="card-title">Japanese Noodles</h4>
-              <p class="card-text">A noodle dish that is a breath of Asian cuisine and brings a unique taste explosion.</p>
-              <a href="#" class="btn btn-primary">Order for 6$</a>
+  <div class="container">
+    <div class="row g-2">
+      <?php foreach ($orders as $order): ?>
+        <div class="col-xl-3 col-md-4 col-sm-6" style="border-radius: 8px;">
+          <div class="card shadow-lg" >
+            <div class="card-body" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 8px; color: white;">
+              <h3 class="card-text"><?= $order['message'] ?></h3>
+              <p class="card-text"><?= $order['email'] ?> <?= $order['name'] ?></p>
+              <?php if ($_SESSION['is_admin'] == '1'): ?>
+                            <form action="../dbsystem/cancel_order.php" method="POST">
+                                <input type="text" readonly class="form-control-plaintext d-none" name="id" value="<?=$order['id']?>">
+                                <button type="submit"class="btn btn-danger">Cancel order</button>
+                            </form>                   
+                        <?php endif; ?>
             </div>
           </div>
+        </div>
+      <?php endforeach; ?>            
+
       </div>
+  </div>
   
-      <div class="col-xl-4 col-md-6 col-sm-12 shadow-lg" style="border-radius: 8px;">
-          <div class="card" style="background-image: url('/img/SushiBox.jpg'); background-size: cover; background-position: center; color: white; border: none; border-radius: 8px;">
-            <div class="card-body" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 8px;">
-              <h4 class="card-title">Sushi Box</h4>
-              <p class="card-text">Order our exclusive Sushi Box containing different types of fresh sushi.</p>
-              <a href="#" class="btn btn-primary">Order for 5$</a>
-            </div>
-          </div>
-      </div>
-  
-      <div class="col-xl-4 col-md-6 col-sm-12 shadow-lg" style="border-radius: 8px;">
-          <div class="card" style="background-image: url('/img/NikuUdon.jpg'); background-size: cover; background-position: center; color: white; border: none; border-radius: 8px;">
-            <div class="card-body" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 8px;">
-              <h4 class="card-title">Japanese Noodles</h4>
-              <p class="card-text">Savor the flavors of tender beef slices and savory broth in this authentic Japanese dish.</p>
-              <a href="#" class="btn btn-primary">Order for 4$</a>
-            </div>
-          </div>
-      </div>
-    </div>
 </main>
 
