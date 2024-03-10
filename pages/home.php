@@ -35,7 +35,7 @@ if($_SESSION["logged"] === "true"){
         <h1 class="display-4">Welcome to WATeamWork website</h1>
         <p class="lead">Developers: Erik Boháč, Dominik Husák, Maksym Kintor</p>
     </div>
-    <div class="container my-5 pb-2">
+    <div class="container my-5 pb-2 d-<?= $_SESSION['logged'] === 'true' ? 'block' : 'none' ?>">
         <h2>Users</h2>
         <div class="row g-2">
             
