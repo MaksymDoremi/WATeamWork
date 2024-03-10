@@ -31,5 +31,24 @@
             </div>
         </form>
     </div>
+    <div class="my-5 container justify-content-center d-flex pt-5" id="fade">
+        <form class="text-container-6 mx-5 w-75 mb-5" action="../dbsystem/change_accountInfo.php" method="POST">
+            <div class="mb-3 row">
+                <label for="name" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="name" name="name" value="<?=$_SESSION["username"]?>">
+                </div>
+            </div>
+            <div class="mb-3 row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="<?=$_SESSION["email"]?>">
+                </div>
+            </div>
+            <div class="row justify-content-center align-items-center my-5">       
+                <button type="submit" class="btn btn-primary fs-3 col-lg-3 mt-4 col-sm-6 col-12">Submit account changes</button>
+            </div>     
+        </form>
+    </div>
     
 </main>

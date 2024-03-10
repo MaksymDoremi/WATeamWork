@@ -9,6 +9,7 @@ function verifyUser($email, $pass) {
     if(password_verify($pass, $data["password"])){
         $_SESSION["logged"] = "true";
         $_SESSION["username"] = $data["name"];
+        $_SESSION["email"] = $email;
         header("Location: ../home");
     }
     else{

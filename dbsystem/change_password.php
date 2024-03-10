@@ -4,6 +4,15 @@ require_once 'dbc.php';
 
 session_start();
 
+
+/**
+ * changePassword
+ * Method used for changing password for the use
+ * @param  mixed $oldPass old password of the user
+ * @param  mixed $newPass new password of the user
+ * @param  mixed $connection database connection
+ * @return void
+ */
 function changePassword($oldPass, $newPass, $connection) {
     $data = verifyPass($connection);
     if(password_verify($oldPass, $data["password"])){
@@ -27,6 +36,13 @@ function changePassword($oldPass, $newPass, $connection) {
     }
 }
 
+
+/**
+ * verifyPass
+ * Method use for veryfying old password
+ * @param  mixed $connection
+ * @return array old password hash
+ */
 function verifyPass($connection) : array {
     #$connection = DBC::getConnection();
 
@@ -43,6 +59,13 @@ function verifyPass($connection) : array {
     return count($rows) > 0 ? $rows[0] : [];
 }
 
+
+/**
+ * hashPass
+ * Method for hashing password
+ * @param  mixed $pass password input
+ * @return string hash string of the password
+ */
 function hashPass($pass) : string {
     $password = password_hash($pass, PASSWORD_DEFAULT);
     return $password;
