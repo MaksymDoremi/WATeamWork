@@ -67,7 +67,7 @@ if($_SESSION["logged"] === "true"){
             <div class="card-body" style="background-color: rgba(0, 0, 0, 0.6); border-radius: 8px; color: white;">
               <h3 class="card-text"><?= $order['message'] ?></h3>
               <p class="card-text"><?= $order['email'] ?> <?= $order['name'] ?></p>
-              <?php if ($_SESSION['is_admin'] == '1'): ?>
+              <?php if ($_SESSION['is_admin'] == '1' or $_SESSION["email"] == $order["email"]): ?>
                             <form action="../dbsystem/cancel_order.php" method="POST">
                                 <input type="text" readonly class="form-control-plaintext d-none" name="id" value="<?=$order['id']?>">
                                 <button type="submit"class="btn btn-danger">Cancel order</button>
