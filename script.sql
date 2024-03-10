@@ -35,7 +35,7 @@ end //
 -- objednavky
 create table user_order(
 	id int primary key auto_increment,
-    is_canceled bit not null, -- 0 not visible to others, 1 - visible to others
+    is_canceled bit not null, -- 1 not visible to others, 0 - visible to others
     message varchar(255) not null,
     user_id int,
     foreign key (user_id) references users(id)
@@ -46,17 +46,17 @@ DELIMITER //
 
 CREATE PROCEDURE insert_user_order(
     IN message_text VARCHAR(255),
-    IN is_canceled_bit bit, 
-    IN user_name VARCHAR(255)
+    IN is_canceled_bit int, 
+    IN user_email VARCHAR(255)
 )
 BEGIN
     DECLARE user_id_val INT;
 
     -- Get user_id based on user_name
-    SELECT id INTO user_id_val FROM users WHERE name = user_name;
+    SELECT id INTO user_id_val FROM users WHERE email = user_email;;
 
     -- Insert the message
-    INSERT INTO message (message, is_canceled, user_id)
+    INSERT INTO user_order (message, is_canceled, user_id)
     VALUES (message_text, is_canceled_bit, user_id_val);
 
 END //
