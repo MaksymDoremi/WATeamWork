@@ -4,8 +4,6 @@ require_once 'dbc.php';
 
 session_start();
 
-
-
 /**
  * changeAccount
  * Method that changes user name

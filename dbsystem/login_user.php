@@ -10,6 +10,7 @@ function verifyUser($email, $pass) {
         $_SESSION["logged"] = "true";
         $_SESSION["username"] = $data["name"];
         $_SESSION["email"] = $email;
+        $_SESSION["is_admin"] = $data["is_admin"];
         header("Location: ../home");
     }
     else{
@@ -21,7 +22,7 @@ function verifyUser($email, $pass) {
 function verifyPass($email) : array {
     $connection = DBC::getConnection();
 
-    $query = "SELECT password, name FROM users WHERE email = ?;";
+    $query = "SELECT password, name, is_admin FROM users WHERE email = ?;";
     $getHashStatement = $connection->prepare($query);
     $getHashStatement->bind_param("s", $email);
     $getHashStatement->execute();
