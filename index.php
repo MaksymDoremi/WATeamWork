@@ -4,6 +4,7 @@ session_start();
 
 $request = $_SERVER['REQUEST_URI'];
 
+# Two lines to uncomment, creates amin user
 #include './dbsystem/register_user.php';
 
 #addUser('admin', 'admin@admin.cz', 'admin', 1);

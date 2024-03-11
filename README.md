@@ -10,9 +10,11 @@ Used technologies:
 ```
 
 ---
-
-#### Website
-Live website can be found [here](http://www.erik-bohac.site).
+Run:
+- Import SQL script into database from `script.sql`
+- Go to `index.php` and uncomment two upper lines to create admin account 
+- Use XAMPP to run website
+- Open website once and then comment back two lines at `index.php`
 
 ---
 Authors: Erik Boháč, Maksym Kintor, Dominik Husák
